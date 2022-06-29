@@ -63,18 +63,14 @@ if(WIN32)
 
 else()
     FILE(GLOB CPLEX_POSSIBLE_PATHS "/opt/ibm/ILOG/CPLEX_Studio*/")
-    message(STATUS "GOT: ${CPLEX_POSSIBLE_PATHS}")
     list(SORT CPLEX_POSSIBLE_PATHS COMPARE FILE_BASENAME ORDER DESCENDING)
     list(GET CPLEX_POSSIBLE_PATHS 0 CPLEX_POSSIBLE_PATH)
 
     if(CPLEX_POSSIBLE_PATH)
-        message(STATUS "possible: ${CPLEX_POSSIBLE_PATH}")
         set(CPLEX_ROOT_DIR "${CPLEX_POSSIBLE_PATH}" CACHE PATH "CPLEX root directory.")
     else()
         set(CPLEX_ROOT_DIR "" CACHE PATH "CPLEX root directory.")
     endif()
-
-    message(STATUS "ROOOOT: ${CPLEX_ROOT_DIR}")
 endif()
 
 FIND_PATH(CPLEX_INCLUDE_DIR
